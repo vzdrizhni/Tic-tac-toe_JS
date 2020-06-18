@@ -1,31 +1,37 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <section>
-        <h1 class="game-title">Tic Tac Toe</h1>
-        <div id="game-container">
-            <div data-cell-index="0" class="cell"></div>
-            <div data-cell-index="1" class="cell"></div>
-            <div data-cell-index="2" class="cell"></div>
-            <div data-cell-index="3" class="cell"></div>
-            <div data-cell-index="4" class="cell"></div>
-            <div data-cell-index="5" class="cell"></div>
-            <div data-cell-index="6" class="cell"></div>
-            <div data-cell-index="7" class="cell"></div>
-            <div data-cell-index="8" class="cell"></div>
-        </div>
-        <h2 class="game-status"></h2>
-        <button class="game-restart">Restart Game</button>
-    </section>
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tika Taka Toka</title>
+    <link rel="stylesheet" href="assets/style.css">
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <div class="game-container">
+      <div class="form-container">
+        <form class="" action="index.html" method="post">
+          <div class="label-wrap">
+            <label for="playerOneName"></label>
+            <input type="text" name="playerOneName" value="" id="playerOneName">
+          </div>
+          <div class="label-wrap">
+            <label for="playerTwoName"></label>
+            <input type="text" name="playerTwoName" value="" id="playerTwoName">
+          </div>
+        </form>
+      </div>
+      <div id="board">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
+    </div>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>

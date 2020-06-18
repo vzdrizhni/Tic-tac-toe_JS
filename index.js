@@ -1,42 +1,18 @@
-const gameModule = (() => {
-    const board = ['', '', '', '', '', '', '', '', ''];
-    const cells = Array.from(document.querySelectorAll('.cell'));
-    const gameBoard = document.querySelector('#game-container');
-    let winner = null;
 
-    const render = () => {
-        board.forEach((mark, idx) => {
-          cells[idx].textContent = board[idx];
-        });
-      };
+const gameBoard = (() => {
+  let boardArr = ['X', '0', '0', 'X', '0', 'X', 'X', '0', 'X'];
+  const cell = Array.from(document.querySelectorAll('.cell'));
 
-    const reset = () => {
-      board = ['', '', '', '', '', '', '', '', ''];
-    };
-    
-    const checkWin = () => {
-        const winCombs = [
-          [0, 1, 2],
-          [3, 4, 5],
-          [6, 7, 8],
-          [0, 3, 6],
-          [1, 4, 7],
-          [2, 5, 8],
-          [0, 4, 8],
-          [2, 4, 6],
-        ];
-    
-        winCombs.forEach((combo) => {
-          if (board[combo[0]]
-            && board[combo[0]] === board[combo[1]]
-            && board[combo[0]] === board[combo[2]]) {
-            winner = 'current';
-          }
-        });
-        return winner || (board.includes('') ? null : 'Draw');
-    };
-    
-    return {
-      render, gameBoard, cells, board, checkWin, reset,
-    };
+  const render = () => {
+    boardArr.forEach((item, idx) => {
+      cell[idx].textContent = item;
+    });
+  };
+  return { cell, render };
 })();
+
+gameBoard.render();
+
+const cellObj = gameBoard;
+console.log(cellObj.cell);
+console.log(cellObj.render);
