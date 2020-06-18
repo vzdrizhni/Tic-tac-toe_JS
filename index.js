@@ -1,11 +1,11 @@
 const gameBoard = (() => {
-  let boardArr = ['X', '0', '0', 'X', '0', 'X', 'X', '0', 'X'];
-  const cell = Array.from(document.querySelectorAll('.cell'));
+  let boardArr = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
+  const cells = Array.from(document.querySelectorAll('.cell'));
   let winner = null;
 
   const render = () => {
     boardArr.forEach((item, idx) => {
-      cell[idx].textContent = item;
+      cells[idx].textContent = item;
     });
   };
 
@@ -35,10 +35,46 @@ const gameBoard = (() => {
     return winner || (boardArray.includes('') ? null : 'Tie');
 };
 
-  return { cell, render, winComb };
+  return { cells, render, winComb };
 })();
 
 gameBoard.render();
+
+const Player = (name, token) => {
+
+    const playTurn = (board, cell) => {
+        const idx = board.cells.findIndex(position => position === cell); // index of the first matching    ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+        if (board.boardArray[idx] === '') {
+          board.render();
+          return idx;
+        }
+        return null;
+      };
+
+    return { name, token, playTurn };
+}
+
+const gamePlay = (() => {
+  const playerOneName = document.querySelector('#player1');
+  const playerTwoName = document.querySelector('#player2');
+  const form = document.querySelector('.player-info');
+  const resetBtn = document.querySelector('#reset');
+  let currentPlayer;
+  let playerOne;
+  let playerTwo;
+
+  const switchTurn = () => {
+    currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+  };
+
+})();
+
+// const hui = Player("pidr", 'X');
+// console.log(hui);
+// gameBoard.render();
+// console.log(gameBoard.cells.innerHTML)
+// hui.playTurn(gameBoard, '');
+// console.log()
 
 // const cellObj = gameBoard;
 // console.log(cellObj.winComb());
@@ -50,3 +86,4 @@ gameBoard.render();
 //     token = "0";
 //   }
 // }
+
