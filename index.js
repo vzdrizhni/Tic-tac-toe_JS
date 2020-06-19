@@ -1,5 +1,6 @@
 const gameBoard = (() => {
-  let boardArr = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
+  let boardArr = ['', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
+  const gameTable = document.querySelector('#board');
   const cells = Array.from(document.querySelectorAll('.cell'));
   let winner = null;
 
@@ -32,27 +33,27 @@ const gameBoard = (() => {
         winner = 'current';
       }
     });
-    return winner || (boardArray.includes('') ? null : 'Tie');
+    return winner || (boardArr.includes('') ? null : 'Draw');
 };
 
-  return { cells, render, winComb };
+  return {
+    render, gameTable, cells, boardArr, winComb, reset,
+  };
 })();
 
 gameBoard.render();
 
 const Player = (name, token) => {
-
-    const playTurn = (board, cell) => {
-        const idx = board.cells.findIndex(position => position === cell); // index of the first matching    ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-        if (board.boardArray[idx] === '') {
-          board.render();
-          return idx;
-        }
-        return null;
-      };
-
-    return { name, token, playTurn };
-}
+  const playTurn = (board, cell) => {
+    const idx = board.cells.findIndex(position => position === cell); // index of the first matching    ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+    if (board.boardArr[idx] === '') {
+      board.render();
+      return idx;
+    }
+    return null;
+  };
+  return { name, token, playTurn };
+};
 
 const gamePlay = (() => {
   const playerOneName = document.querySelector('#player1');
@@ -67,6 +68,36 @@ const gamePlay = (() => {
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
   };
 
+  const gameRound = () => {
+    const board = gameBoard;
+    const gameStatus = document.querySelector('.game-status');
+
+    if (currentPlayer.name !== '') {
+      gameStatus.textContent = `${currentPlayer.name}'s Turn`;
+    } else {
+      gameStatus.textContent = 'Board: ';
+    }
+
+    board.gameTable.addEventListener('click', (event) => {
+      event.preventDefault();
+      const play = currentPlayer.playTurn(board, event.target);
+      if (play !== null) {
+        board.boardArr[play] = `${currentPlayer.token}`;
+        board.render();
+        const winStatus = board.winComb();
+        if (winStatus === 'Draw') {
+          gameStatus.textContent = 'Draw!';
+        } else if (winStatus === null) {
+          switchTurn();
+          gameStatus.textContent = `${currentPlayer.name}'s Turn`;
+        } else {
+          gameStatus.textContent = `Winner is ${currentPlayer.name}`;
+          board.reset();
+          board.render();
+        }
+      }
+    });
+  };
 })();
 
 // const hui = Player("pidr", 'X');
@@ -86,4 +117,3 @@ const gamePlay = (() => {
 //     token = "0";
 //   }
 // }
-
