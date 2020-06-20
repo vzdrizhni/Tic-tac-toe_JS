@@ -166,3 +166,21 @@ div[id^="row-"] div:hover {
   background-color: #3f3f3f;
   border-color: red;
 }
+
+@media only screen and (max-width: 500px) {
+  .gameplay-container {
+    min-width: unset;
+    min-height: unset;
+    margin-top: 9%;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  div[id^="row-"] div {
+    min-width: 110px;
+    min-height: 110px;
+    font-size: 46px;
+  }
+}
