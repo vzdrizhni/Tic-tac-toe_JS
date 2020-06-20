@@ -169,7 +169,7 @@ const Gameplay = (() => {
   });
 
   return {
-    applyEventListeners, makeAMove, player1, player2,
+    applyEventListeners, makeAMove,
   };
 })();
   /* eslint-enable */

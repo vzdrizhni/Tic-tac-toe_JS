@@ -14,12 +14,10 @@ h2 {
   text-align: center;
   color: #3f3f3f;
   font-size: 50px;
-  font-family: inherit;
 }
 
 input {
   min-height: 42px;
-  font-family: inherit;
   font-size: 16px;
   border-radius: 4px;
   padding-left: 12px;
@@ -73,8 +71,6 @@ header {
 
 div[id^="row-"] div {
   flex: 1;
-
-  /* padding-top: 20px; */
   font-family: inherit;
   text-align: center;
   font-size: 58px;
