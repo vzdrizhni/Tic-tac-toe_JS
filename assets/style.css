@@ -1,5 +1,145 @@
-#board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 70px;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rock Salt', cursive;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: cornsilk;
+}
+
+h2 {
+  text-align: center;
+  color: #3f3f3f;
+  font-size: 50px;
+  font-family: inherit;
+}
+
+input {
+  min-height: 42px;
+  font-family: inherit;
+  font-size: 16px;
+  border-radius: 4px;
+  padding-left: 12px;
+  margin: 10px 0 0;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-self: center;
+  margin: 24px 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-container {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.buttons {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 12px 0;
+}
+
+.gameplay-container {
+  display: flex;
+  margin-top: 12px;
+  min-width: 400px;
+  min-height: 400px;
+  flex-direction: column;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ and Edge */
+  user-select: none; /* Standard syntax */
+}
+
+.gameplay-row {
+  display: flex;
+  flex: 3;
+  flex-direction: row;
+}
+
+div[id^="row-"] div {
+  flex: 1;
+
+  /* padding-top: 20px; */
+  font-family: inherit;
+  text-align: center;
+  font-size: 58px;
+  min-width: 140px;
+  min-height: 140px;
+  cursor: pointer;
+}
+
+.winner {
+  flex: 1;
+  margin-top: 12px;
+  text-align: center;
+}
+
+#a1,
+#a2,
+#b1,
+#b2 {
+  border-right: 3px solid red;
+  border-bottom: 3px solid red;
+}
+
+#a3,
+#b3 {
+  border-bottom: 3px solid red;
+}
+
+#c1,
+#c2 {
+  border-right: 3px solid red;
+}
+
+#winner-text {
+  font-family: inherit;
+  font-size: 32px;
+}
+
+#reset {
+  display: none;
+  width: 117px;
+  height: 53px;
+  align-self: center;
+  margin-left: 15px;
+}
+
+#startBtn,
+#reset {
+  font-family: inherit;
+  font-size: 18px;
+  border: 4px solid #7e7e7e;
+  color: #2a2a2a;
+  background-color: #fff;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#startBtn:hover,
+#reset:hover {
+  background-color: #7e7e7e;
+  color: #fff;
+  border-color: #f6f6f6;
+}
+
+#startBtn:active,
+#reset:active {
+  background-color: #3f3f3f;
+  border-color: #fff;
 }

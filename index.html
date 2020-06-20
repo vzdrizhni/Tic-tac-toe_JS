@@ -2,41 +2,53 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Tika Taka Toka</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Tic Tac Toe</h1>
-    <div class="game-container">
-      <div class="form-container">
-        <form class="player-info" action="index.html" method="post">
-          <div class="label-wrap">
-            <label for="player1"></label>
-            <input type="text" name="player1" id="player1">
+    <div class="main-container">
+      <header>
+        <h2 id="game-message">Tic Tac Toe</h2>
+        <button id="reset">Restart</button>
+      </header>
+      <div class="game-container">
+        <div class="buttons">
+          <input id="plr1" type="text" name="plr1" placeholder="Player 1 is O" />
+          <input id="plr2" type="text" name="plr2" placeholder="Player 2 is X" />
+          <input id="startBtn" type="button" name="start" value="Start Game">
+        </div>
+        <div class="gameplay-container">
+          <div id="row-1" class="gameplay-row">
+            <div id="a1" class="gameplay-cell">
+            </div>
+            <div id="a2" class="gameplay-cell">
+            </div>
+            <div id="a3" class="gameplay-cell">
+            </div>
           </div>
-          <div class="label-wrap">
-            <label for="player2"></label>
-            <input type="text" name="player2" id="player2">
+          <div id="row-2" class="gameplay-row">
+            <div id="b1" class="gameplay-cell">
+            </div>
+            <div id="b2" class="gameplay-cell">
+            </div>
+            <div id="b3" class="gameplay-cell">
+            </div>
           </div>
-        </form>
-      </div>
-      <div class="col-4 offset-4 place hidden">
-      <div class="game-status alert alert-primary text-center">
-        <h4>Board:</h4>
-      </div>
-      <div id="board">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+          <div id="row-3" class="gameplay-row">
+            <div id="c1" class="gameplay-cell">
+            </div>
+            <div id="c2" class="gameplay-cell">
+            </div>
+            <div id="c3" class="gameplay-cell">
+            </div>
+          </div>
+        </div>
+        <div class="winner">
+          <h2 id="winner-text"></h2>
+        </div>
       </div>
     </div>
-    <button id="reset" type="button">Reset</button>
-    <script src="index.js"></script>
+    <script src="index.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,119 +1,183 @@
-const gameBoard = (() => {
-  let boardArr = ['', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
-  const gameTable = document.querySelector('#board');
-  const cells = Array.from(document.querySelectorAll('.cell'));
-  let winner = null;
+// Player factory function
+function createPlayer(nameArg, signArg) {
+  const name = nameArg;
+  const sign = signArg;
+  return { name, sign };
+}
 
-  const render = () => {
-    boardArr.forEach((item, idx) => {
-      cells[idx].textContent = item;
-    });
+
+// GameBoard module
+const GameBoard = (() => {
+  const gameboard = {
+    '#a1': '',
+    '#a2': '',
+    '#a3': '',
+    '#b1': '',
+    '#b2': '',
+    '#b3': '',
+    '#c1': '',
+    '#c2': '',
+    '#c3': '',
   };
 
-  const reset = () => {
-    boardArr = ['', '', '', '', '', '', '', '', ''];
-  };
-
-  const winComb = () => {
-    const winArr = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-
-    winArr.forEach((arr) => {
-      if (boardArr[arr[0]]
-         && boardArr[arr[0]] === boardArr[arr[1]]
-         && boardArr[arr[0]] === boardArr[arr[2]]) {
-        winner = 'current';
+  /* eslint-disable */
+  // populate game board with values in gameboard array
+  const populateGameBoard = () => {
+    for (let key in gameboard ) {
+      const cellQuery = document.querySelector(key);
+      if (gameboard.hasOwnProperty(key)) {
+        cellQuery.textContent = gameboard[key];
       }
-    });
-    return winner || (boardArr.includes('') ? null : 'Draw');
-};
+    }
+  };
+  /* eslint-enable */
+
+  // assign value to cell
+  const assignValue = (cell, value) => {
+    if (gameboard[cell] === '') {
+      gameboard[cell] = value;
+      populateGameBoard();
+    } else {
+      throw new Error('Cannot assign a new value to a populated cell.');
+    }
+  };
+  const getGameBoard = () => gameboard;
+  return {
+    getGameBoard, assignValue, populateGameBoard,
+  };
+})();
+
+// Gameplay Module
+const Gameplay = (() => {
+  let gameActive = false;
+  let turn = true;
+  const gb = GameBoard.getGameBoard();
+  const resetBtn = document.querySelector('#reset');
+  const player1 = createPlayer('Player 1', 'O');
+  const player2 = createPlayer('Player 2', 'X');
+  const winComb = () => {
+    // possible win scenarios
+    // a1, a2, a3 is same or a3, b3, c3 is same or a1, b1, c1 is same, or
+    // a2, b2, c2 is same, c1, c2, c3 is same
+    // or a1, b2, c3 is same or a3, b2, c1 is same
+    const a1 = gb['#a1'];
+    const a3 = gb['#a3'];
+    const c2 = gb['#c2'];
+    if (a1 !== '') {
+      if ((a1 === gb['#a2'] && a1 === gb['#a3']) || (a1 === gb['#b1'] && a1 === gb['#c1']) || (a1 === gb['#b2'] && a1 === gb['#c3'])) {
+        return a1;
+      }
+    }
+
+    if (a3 !== '') {
+      if ((a3 === gb['#b3'] && a3 === gb['#c3']) || (a3 === gb['#b2'] && a3 === gb['#c1'])) {
+        return a3;
+      }
+    }
+
+    if (c2 !== '') {
+      if ((c2 === gb['#a2'] && c2 === gb['#b2']) || (c2 === gb['#c1'] && c2 === gb['#c3'])) {
+        return c2;
+      }
+    }
+
+    if (gb['#a2'] !== '' && gb['#b1'] !== '' && gb['#b2'] !== '' && gb['#b3'] !== '' && gb['#c1'] !== '' && gb['#c3'] !== '') {
+      return 'TIE';
+    }
+    return false;
+  };
+
+  const printWinner = winnerName => {
+    if (winnerName === 'TIE') {
+      document.getElementById('game-message').innerText = "It's a TIE! 👻";
+      return;
+    }
+    document.getElementById('game-message').innerText = `${winnerName} won! 🎉`;
+  };
+
+  const checkForWinner = () => {
+    const winningSign = winComb();
+    if (winningSign) {
+      gameActive = false;
+      if (winningSign === 'O') {
+        printWinner(player1.name);
+      } else if (winningSign === 'X') {
+        printWinner(player2.name);
+      } else if (winningSign === 'TIE') {
+        printWinner('TIE');
+      }
+      resetBtn.style.display = 'block';
+    }
+  };
+
+  const hideButtons = () => {
+    const gameContainer = document.querySelector('.game-container');
+    const buttons = document.querySelector('.buttons');
+    gameContainer.removeChild(buttons);
+  };
+
+  const changePlayersNames = () => {
+    const p1Name = document.querySelector('#plr1').value;
+    const p2Name = document.querySelector('#plr2').value;
+    if (p1Name !== '') player1.name = p1Name;
+    if (p2Name !== '') player2.name = p2Name;
+  };
+
+  const initializeGame = () => {
+    if (!gameActive) {
+      changePlayersNames();
+      hideButtons();
+      gameActive = true;
+      document.getElementById('game-message').innerText = `${player1.name}'s Turn!'`;
+    } else {
+      throw new Error('Game already started.');
+    }
+  };
+
+  const applyEventListeners = () => {
+    const startBtn = document.querySelector('#startBtn');
+    startBtn.addEventListener('click', () => initializeGame());
+  };
+
+  /* eslint-disable */
+  const makeAMove = () => {
+    for (let key in gb) {
+      const cellQuery = document.querySelector(key);
+      if (gb.hasOwnProperty(key)) {
+        cellQuery.addEventListener('click', (e) => {
+          if (gameActive) {
+            if (turn) {
+              GameBoard.assignValue(key, 'O')
+              document.getElementById('game-message').innerText = `${player2.name}'s Turn!'`
+              checkForWinner();
+              turn = !turn;
+            } else {
+              GameBoard.assignValue(key, 'X');
+              document.getElementById('game-message').innerText = `${player1.name}'s Turn!'`
+              checkForWinner();
+              turn = !turn;
+            }
+          }
+        });
+      }
+    }
+  };
+
+  resetBtn.addEventListener('click', () => {
+    document.querySelector('#game-message').textContent = 'Tic Tac Toe';
+    window.location.reload();
+  });
 
   return {
-    render, gameTable, cells, boardArr, winComb, reset,
+    applyEventListeners, makeAMove, player1, player2,
   };
 })();
+  /* eslint-enable */
 
-gameBoard.render();
+function render() {
+  GameBoard.populateGameBoard();
+  Gameplay.applyEventListeners();
+  Gameplay.makeAMove();
+}
 
-const Player = (name, token) => {
-  const playTurn = (board, cell) => {
-    const idx = board.cells.findIndex(position => position === cell); // index of the first matching    ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-    if (board.boardArr[idx] === '') {
-      board.render();
-      return idx;
-    }
-    return null;
-  };
-  return { name, token, playTurn };
-};
-
-const gamePlay = (() => {
-  const playerOneName = document.querySelector('#player1');
-  const playerTwoName = document.querySelector('#player2');
-  const form = document.querySelector('.player-info');
-  const resetBtn = document.querySelector('#reset');
-  let currentPlayer;
-  let playerOne;
-  let playerTwo;
-
-  const switchTurn = () => {
-    currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
-  };
-
-  const gameRound = () => {
-    const board = gameBoard;
-    const gameStatus = document.querySelector('.game-status');
-
-    if (currentPlayer.name !== '') {
-      gameStatus.textContent = `${currentPlayer.name}'s Turn`;
-    } else {
-      gameStatus.textContent = 'Board: ';
-    }
-
-    board.gameTable.addEventListener('click', (event) => {
-      event.preventDefault();
-      const play = currentPlayer.playTurn(board, event.target);
-      if (play !== null) {
-        board.boardArr[play] = `${currentPlayer.token}`;
-        board.render();
-        const winStatus = board.winComb();
-        if (winStatus === 'Draw') {
-          gameStatus.textContent = 'Draw!';
-        } else if (winStatus === null) {
-          switchTurn();
-          gameStatus.textContent = `${currentPlayer.name}'s Turn`;
-        } else {
-          gameStatus.textContent = `Winner is ${currentPlayer.name}`;
-          board.reset();
-          board.render();
-        }
-      }
-    });
-  };
-})();
-
-// const hui = Player("pidr", 'X');
-// console.log(hui);
-// gameBoard.render();
-// console.log(gameBoard.cells.innerHTML)
-// hui.playTurn(gameBoard, '');
-// console.log()
-
-// const cellObj = gameBoard;
-// console.log(cellObj.winComb());
-
-// function (playerName, token) {
-//   if(playerName === playerOneName) {
-//     token = "X";
-//   } else {
-//     token = "0";
-//   }
-// }
+render();
