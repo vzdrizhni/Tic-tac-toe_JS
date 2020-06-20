@@ -60,7 +60,9 @@ const Gameplay = (() => {
     // a1, a2, a3 is same or a3, b3, c3 is same or a1, b1, c1 is same, or
     // a2, b2, c2 is same, c1, c2, c3 is same
     // or a1, b2, c3 is same or a3, b2, c1 is same
+    // or b1, b2, b3 is same
     const a1 = gb['#a1'];
+    const b1 = gb['#b1'];
     const a3 = gb['#a3'];
     const c2 = gb['#c2'];
     if (a1 !== '') {
@@ -72,6 +74,12 @@ const Gameplay = (() => {
     if (a3 !== '') {
       if ((a3 === gb['#b3'] && a3 === gb['#c3']) || (a3 === gb['#b2'] && a3 === gb['#c1'])) {
         return a3;
+      }
+    }
+
+    if (b1 !== '') {
+      if (b1 === gb['#b2'] && b1 === gb['#b3']) {
+        return b1;
       }
     }
 
@@ -112,6 +120,8 @@ const Gameplay = (() => {
 
   const hideButtons = () => {
     const gameContainer = document.querySelector('.game-container');
+    const gameplayCont = document.querySelector('.gameplay-container');
+    gameplayCont.style.display = 'flex';
     const buttons = document.querySelector('.buttons');
     gameContainer.removeChild(buttons);
   };
