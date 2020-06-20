@@ -117,7 +117,6 @@ div[id^="row-"] div {
   width: 117px;
   height: 53px;
   align-self: center;
-  margin-left: 15px;
 }
 
 #startBtn,
@@ -135,7 +134,7 @@ div[id^="row-"] div {
 #reset:hover {
   background-color: #7e7e7e;
   color: #fff;
-  border-color: #f6f6f6;
+  border-color: red;
 }
 
 #startBtn:active,
