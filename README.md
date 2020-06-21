@@ -23,7 +23,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/rammazzoti2000/Tic-tac-toe_JS">
-    <img src="assets/images/microverse.png" alt="Logo" width="80" height="80">
+    <img src="assets/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">JavaScript --> [Tic Tac Toe]</h3>
