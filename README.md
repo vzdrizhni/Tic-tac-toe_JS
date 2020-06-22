@@ -37,6 +37,7 @@
     <a href="https://github.com/vzdrizhni/Tic-tac-toe_JS/issues">Report Bug</a>
     Â·
     <a href="https://github.com/vzdrizhni/Tic-tac-toe_JS/issues">Request Feature</a>
+
   </p>
 </p>
 
@@ -58,7 +59,7 @@ In this project, the student builds a Tic Tac Toe game (Again) but this time itâ
 
 <p float="left" align="center">
   <img src="assets/smartmockups_kbonzmh4.png" width="300" />
-  <img src="assets/smartmockups_kbonxojq.png" width="300" />
+  <img src="assets/smartmockups_kbonxojq.png" width="300" /> 
 </p>
 
 ### Built With
@@ -123,6 +124,7 @@ Give a :star: if you like this project!
 ## Acknowledgements
 * [Microverse](https://www.microverse.org/)
 * [The Odin Project](https://www.theodinproject.com/)
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/vzdrizhni/Tic-tac-toe_JS.svg?style=flat-square
