@@ -22,7 +22,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/rammazzoti2000/Tic-tac-toe_JS">
+  <a href="https://github.com/vzdrizhni/Tic-tac-toe_JS">
     <img src="assets/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -31,12 +31,13 @@
   <p align="center">
     This project is part of the Microverse curriculum in JavaScript module!
     <br />
-    <a href="https://github.com/rammazzoti2000/Tic-tac-toe_JS"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/vzdrizhni/Tic-tac-toe_JS"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/rammazzoti2000/Tic-tac-toe_JS/issues">Report Bug</a>
+    <a href="https://github.com/vzdrizhni/Tic-tac-toe_JS/issues">Report Bug</a>
     ·
-    <a href="https://github.com/rammazzoti2000/Tic-tac-toe_JS/issues">Request Feature</a>
+    <a href="https://github.com/vzdrizhni/Tic-tac-toe_JS/issues">Request Feature</a>
+
   </p>
 </p>
 
@@ -76,14 +77,14 @@ This project was built using these technologies.
 
 To have this app on your pc, you need to:
 * have Ruby & Ruby on Rails installed in your computer
-* [download](https://github.com/rammazzoti2000/Tic-tac-toe_JS/archive/develop.zip) or clone this repo:
+* [download](https://github.com/vzdrizhni/Tic-tac-toe_JS/archive/develop.zip) or clone this repo:
   - Clone with SSH:
   ```
-    git@github.com:rammazzoti2000/Tic-tac-toe_JS.git
+    git@github.com:vzdrizhni/Tic-tac-toe_JS.git
   ```
   - Clone with HTTPS
   ```
-    https://github.com/rammazzoti2000/Tic-tac-toe_JS.git
+    https://github.com/vzdrizhni/Tic-tac-toe_JS.git
   ```
 - and open ```index.html``` file with a browser of your choice.
 
@@ -91,7 +92,7 @@ To have this app on your pc, you need to:
  > No automated tests yet
 
 ## Live Demo
-[Live Demo](https://rammazzoti2000.github.io/Tic-tac-toe_JS/) :point_left:
+[Live Demo](https://raw.githack.com/vzdrizhni/Tic-tac-toe_JS/feature/readme_instructions/index.html) :point_left:
 
 <!-- CONTACT -->
 ## Contributors
@@ -112,7 +113,7 @@ To have this app on your pc, you need to:
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/rammazzoti2000/Tic-tac-toe_JS/issues).
+Feel free to check the [issues page](https://github.com/vzdrizhni/Tic-tac-toe_JS/issues).
 
 ## Show your support
 
@@ -123,16 +124,17 @@ Give a :star: if you like this project!
 ## Acknowledgements
 * [Microverse](https://www.microverse.org/)
 * [The Odin Project](https://www.theodinproject.com/)
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/rammazzoti2000/Tic-tac-toe_JS.svg?style=flat-square
-[contributors-url]: https://github.com/rammazzoti2000/Tic-tac-toe_JS/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/rammazzoti2000/Tic-tac-toe_JS.svg?style=flat-square
-[forks-url]: https://github.com/rammazzoti2000/Tic-tac-toe_JS/network/members
-[stars-shield]: https://img.shields.io/github/stars/rammazzoti2000/Tic-tac-toe_JS.svg?style=flat-square
-[stars-url]: https://github.com/rammazzoti2000/Tic-tac-toe_JS/stargazers
-[issues-shield]: https://img.shields.io/github/issues/rammazzoti2000/Tic-tac-toe_JS.svg?style=flat-square
-[issues-url]: https://github.com/rammazzoti2000/Tic-tac-toe_JS/issues
+[contributors-shield]: https://img.shields.io/github/contributors/vzdrizhni/Tic-tac-toe_JS.svg?style=flat-square
+[contributors-url]: https://github.com/vzdrizhni/Tic-tac-toe_JS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/vzdrizhni/Tic-tac-toe_JS.svg?style=flat-square
+[forks-url]: https://github.com/vzdrizhni/Tic-tac-toe_JS/network/members
+[stars-shield]: https://img.shields.io/github/stars/vzdrizhni/Tic-tac-toe_JS.svg?style=flat-square
+[stars-url]: https://github.com/vzdrizhni/Tic-tac-toe_JS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/vzdrizhni/Tic-tac-toe_JS.svg?style=flat-square
+[issues-url]: https://github.com/vzdrizhni/Tic-tac-toe_JS/issues
 
 ## 📝 License
 
