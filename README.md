@@ -92,7 +92,7 @@ To have this app on your pc, you need to:
  > No automated tests yet
 
 ## Live Demo
-[Live Demo](https://raw.githack.com/vzdrizhni/Tic-tac-toe_JS/feature/readme_instructions/index.html) :point_left:
+[Live Demo](https://raw.githack.com/vzdrizhni/Tic-tac-toe_JS/V1.0/index.html) :point_left:
 
 <!-- CONTACT -->
 ## Contributors
