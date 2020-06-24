@@ -38,6 +38,7 @@ const GameBoard = (() => {
       gameboard[cell] = value;
       populateGameBoard();
     } else {
+      alert('Cannot assign a new value to a populated cell.');
       throw new Error('Cannot assign a new value to a populated cell.');
     }
   };
