@@ -1,11 +1,10 @@
 import './assets/styling/style.css';
 // Player factory function
-function createPlayer(nameArg, signArg) {
+const createPlayer = (nameArg, signArg) => {
   const name = nameArg;
   const sign = signArg;
   return { name, sign };
-}
-
+};
 
 // GameBoard module
 const GameBoard = (() => {
