@@ -1,3 +1,4 @@
+import './assets/styling/style.css';
 // Player factory function
 function createPlayer(nameArg, signArg) {
   const name = nameArg;
