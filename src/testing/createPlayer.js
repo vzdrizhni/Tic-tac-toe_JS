@@ -33,7 +33,7 @@ exports.GameBoard = (() => {
   const assignValue = (cell, value) => {
     if (gameboard[cell] === '') {
       gameboard[cell] = value;
-      // populateGameBoard();
+      populateGameBoard();
     } else {
       alert('Cannot assign a new value to a populated cell.');
       throw new Error('Cannot assign a new value to a populated cell.');

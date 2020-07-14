@@ -192,3 +192,5 @@ function render() {
 }
 
 render();
+
+export default GameBoard

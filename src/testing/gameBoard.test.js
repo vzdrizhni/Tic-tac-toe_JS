@@ -1,4 +1,5 @@
-const { GameBoard } = require('./createPlayer');
+// const { GameBoard } = require('./createPlayer');
+import GameBoard from '../index'
 
 const gameboard = GameBoard.getGameBoard();
 
@@ -36,7 +37,7 @@ test('', ()=> {
 
 describe('assignValue function', () => {
   // GameBoard.assignValue('#a1', '');
-  GameBoard.assignValue('#a2', 'O');
+
   // GameBoard.assignValue('#a3','X');
   // GameBoard.assignValue('#b1', '');
   // GameBoard.assignValue('#b2', 'O');
@@ -45,7 +46,10 @@ describe('assignValue function', () => {
   // GameBoard.assignValue('#c2', 'O');
   // GameBoard.assignValue('#c3', '');
 
+
   test('gameboard should be equal to fillboar', () => {
-    expect(filledBoard).toEqual(gameboard);
+    GameBoard.assignValue('#a2', 'O');
+
+    expect(filledBoard['#a2']).toEqual(gameboard['#a2']);
   })
 })
