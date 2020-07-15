@@ -61,10 +61,6 @@ In this project, the student builds a Tic Tac Toe game (Again) but this time itâ
 <<<<<<< HEAD
   <img src="./src/assets/smartmockups_kbonzmh4.png" width="300" />
   <img src="./src/assets/smartmockups_kbonxojq.png" width="300" />
-=======
-  <img src="assets/smartmockups_kbonzmh4.png" width="300" />
-  <img src="assets/smartmockups_kbonxojq.png" width="300" />
->>>>>>> 8602125583994d360468481533440040cb0dadc9
 </p>
 
 ### Built With
