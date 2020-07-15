@@ -59,7 +59,7 @@ In this project, the student builds a Tic Tac Toe game (Again) but this time itâ
 
 <p float="left" align="center">
   <img src="assets/smartmockups_kbonzmh4.png" width="300" />
-  <img src="assets/smartmockups_kbonxojq.png" width="300" /> 
+  <img src="assets/smartmockups_kbonxojq.png" width="300" />
 </p>
 
 ### Built With
@@ -89,7 +89,7 @@ To have this app on your pc, you need to:
 - and open ```index.html``` file with a browser of your choice.
 
 ## Automated Test
- run `$ npm test` command line from the working directory
+  > no automated tests yet
 
 ## Live Demo
 
