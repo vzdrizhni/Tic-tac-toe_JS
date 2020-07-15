@@ -66,6 +66,7 @@ In this project, the student builds a Tic Tac Toe game (Again) but this time itâ
 This project was built using these technologies.
 * HTML/CSS
 * JavaScript
+* Jest Testing Tool
 * ESLint
 * StyleLint
 * GithubActions :muscle:
@@ -89,7 +90,7 @@ To have this app on your pc, you need to:
 - and open ```index.html``` file with a browser of your choice.
 
 ## Automated Test
- > No automated tests yet
+ run `$ npm run test` command line in the project's root directory
 
 ## Live Demo
 
