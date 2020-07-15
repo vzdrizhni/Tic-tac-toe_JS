@@ -89,7 +89,7 @@ To have this app on your pc, you need to:
 - and open ```index.html``` file with a browser of your choice.
 
 ## Automated Test
- > No automated tests yet
+ run `$ npm test` command line from the working directory
 
 ## Live Demo
 
