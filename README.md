@@ -87,7 +87,7 @@ To have this app on your pc, you need to:
   ```
     https://github.com/vzdrizhni/Tic-tac-toe_JS.git
   ```
-- and open ```index.html``` file with a browser of your choice.
+- and open ```index.html``` file with a browser of your choice
 
 ## Automated Test
  run `$ npm run test` command line in the project's root directory
