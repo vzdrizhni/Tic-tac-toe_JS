@@ -23,7 +23,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/vzdrizhni/Tic-tac-toe_JS">
-    <img src="assets/microverse.png" alt="Logo" width="80" height="80">
+    <img src="./src/assets/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">JavaScript --> [Tic Tac Toe]</h3>
@@ -58,14 +58,20 @@
 In this project, the student builds a Tic Tac Toe game (Again) but this time it’ll be rendered in the browser. No backend. This project follows the lesson about Factory Functions and The Module Pattern so the main goal is to put into practice those concepts along with the main concepts of Object Oriented Programming. Particularly, classes/objects and how to access their methods and attributes.
 
 <p float="left" align="center">
+<<<<<<< HEAD
+  <img src="./src/assets/smartmockups_kbonzmh4.png" width="300" />
+  <img src="./src/assets/smartmockups_kbonxojq.png" width="300" />
+=======
   <img src="assets/smartmockups_kbonzmh4.png" width="300" />
   <img src="assets/smartmockups_kbonxojq.png" width="300" />
+>>>>>>> 8602125583994d360468481533440040cb0dadc9
 </p>
 
 ### Built With
 This project was built using these technologies.
 * HTML/CSS
 * JavaScript
+* Jest Testing Tool
 * ESLint
 * StyleLint
 * GithubActions :muscle:
@@ -86,10 +92,10 @@ To have this app on your pc, you need to:
   ```
     https://github.com/vzdrizhni/Tic-tac-toe_JS.git
   ```
-- and open ```index.html``` file with a browser of your choice.
+- and open ```index.html``` file with a browser of your choice
 
 ## Automated Test
-  > no automated tests yet
+ run `$ npm run test` command line in the project's root directory
 
 ## Live Demo
 

@@ -1,17 +1,23 @@
-// Player factory function
-function createPlayer(nameArg, signArg) {
-  const name = nameArg;
-  const sign = signArg;
-  return { name, sign };
-}
+import GameBoard from './gameBoard';
+import createPlayer from './player';
 
-
-// GameBoard module
-const GameBoard = (() => {
+const Gameplay = (() => {
+  let gameActive = false;
+  let turn = true;
+  const gb = GameBoard.getGameBoard();
+  const resetBtn = document.querySelector('#reset');
+  const player1 = createPlayer('Player 1', 'O');
+  const player2 = createPlayer('Player 2', 'X');
+  const activeReset = () => {
+    resetBtn.addEventListener('click', () => {
+      document.querySelector('#game-message').textContent = 'Tic Tac Toe';
+      window.location.reload();
+    });
+  };
   const gameboard = {
-    '#a1': '',
-    '#a2': '',
-    '#a3': '',
+    '#a1': 'O',
+    '#a2': 'O',
+    '#a3': 'O',
     '#b1': '',
     '#b2': '',
     '#b3': '',
@@ -20,42 +26,6 @@ const GameBoard = (() => {
     '#c3': '',
   };
 
-  /* eslint-disable */
-  // populate game board with values in gameboard array
-  const populateGameBoard = () => {
-    for (let key in gameboard ) {
-      const cellQuery = document.querySelector(key);
-      if (gameboard.hasOwnProperty(key)) {
-        cellQuery.textContent = gameboard[key];
-      }
-    }
-  };
-  /* eslint-enable */
-
-  // assign value to cell
-  const assignValue = (cell, value) => {
-    if (gameboard[cell] === '') {
-      gameboard[cell] = value;
-      populateGameBoard();
-    } else {
-      alert('Cannot assign a new value to a populated cell.');
-      throw new Error('Cannot assign a new value to a populated cell.');
-    }
-  };
-  const getGameBoard = () => gameboard;
-  return {
-    getGameBoard, assignValue, populateGameBoard,
-  };
-})();
-
-// Gameplay Module
-const Gameplay = (() => {
-  let gameActive = false;
-  let turn = true;
-  const gb = GameBoard.getGameBoard();
-  const resetBtn = document.querySelector('#reset');
-  const player1 = createPlayer('Player 1', 'O');
-  const player2 = createPlayer('Player 2', 'X');
   const winComb = () => {
     // possible win scenarios
     // a1, a2, a3 is same or a3, b3, c3 is same or a1, b1, c1 is same, or
@@ -96,6 +66,47 @@ const Gameplay = (() => {
     return false;
   };
 
+  const winCombTest = () => {
+    // possible win scenarios
+    // a1, a2, a3 is same or a3, b3, c3 is same or a1, b1, c1 is same, or
+    // a2, b2, c2 is same, c1, c2, c3 is same
+    // or a1, b2, c3 is same or a3, b2, c1 is same
+    // or b1, b2, b3 is same
+    const a1 = gameboard['#a1'];
+    const b1 = gameboard['#b1'];
+    const a3 = gameboard['#a3'];
+    const c2 = gameboard['#c2'];
+    if (a1 !== '') {
+      if ((a1 === gameboard['#a2'] && a1 === gameboard['#a3']) || (a1 === gameboard['#b1'] && a1 === gameboard['#c1']) || (a1 === gameboard['#b2'] && a1 === gameboard['#c3'])) {
+        return a1;
+      }
+    }
+
+    if (a3 !== '') {
+      if ((a3 === gameboard['#b3'] && a3 === gameboard['#c3']) || (a3 === gameboard['#b2'] && a3 === gameboard['#c1'])) {
+        return a3;
+      }
+    }
+
+    if (b1 !== '') {
+      if (b1 === gameboard['#b2'] && b1 === gameboard['#b3']) {
+        return b1;
+      }
+    }
+
+    if (c2 !== '') {
+      if ((c2 === gameboard['#a2'] && c2 === gameboard['#b2']) || (c2 === gameboard['#c1'] && c2 === gameboard['#c3'])) {
+        return c2;
+      }
+    }
+
+    if (gameboard['#a1'] !== '' && gameboard['#a2'] !== '' && gameboard['#a3'] !== '' && gameboard['#b1'] !== '' && gameboard['#b2'] !== '' && gameboard['#b3'] !== '' && gameboard['#c1'] !== '' && gameboard['#c3'] !== '') {
+      return 'TIE';
+    }
+    return false;
+  };
+
+
   const printWinner = winnerName => {
     if (winnerName === 'TIE') {
       document.getElementById('game-message').innerText = "It's a TIE! 👻";
@@ -116,6 +127,22 @@ const Gameplay = (() => {
         printWinner('TIE');
       }
       resetBtn.style.display = 'block';
+      activeReset();
+    }
+  };
+
+  // eslint-disable-next-line consistent-return
+  const checkForWinnerTest = () => {
+    const winningSign = winCombTest();
+    if (winningSign) {
+      gameActive = false;
+      if (winningSign === 'O') {
+        return player1.name;
+      } if (winningSign === 'X') {
+        return player2.name;
+      } if (winningSign === 'TIE') {
+        return 'TIE';
+      }
     }
   };
 
@@ -132,6 +159,14 @@ const Gameplay = (() => {
     const p2Name = document.querySelector('#plr2').value;
     if (p1Name !== '') player1.name = p1Name;
     if (p2Name !== '') player2.name = p2Name;
+  };
+
+  const changePlayersNamesTest = (p1Name, p2Name) => {
+    p1Name = 'Nikulay';
+    p2Name = 'Capos';
+    if (p1Name !== '') player1.name = p1Name;
+    if (p2Name !== '') player2.name = p2Name;
+    return [p1Name, p2Name];
   };
 
   const initializeGame = () => {
@@ -174,21 +209,32 @@ const Gameplay = (() => {
     }
   };
 
-  resetBtn.addEventListener('click', () => {
-    document.querySelector('#game-message').textContent = 'Tic Tac Toe';
-    window.location.reload();
-  });
-
+  const makeAMoveTest = () => {
+    for (let key in gameboard) {
+      if (gameboard.hasOwnProperty(key)) {
+        if (gameActive) {
+          if (turn) {
+            GameBoard.updateBoard(key, 'O')
+            checkForWinnerTest();
+            turn = !turn;
+          } else {
+            GameBoard.updateBoard(key, 'X');
+            checkForWinnerTest();
+            turn = !turn;
+          }
+        }
+      }
+    }
+  };
   return {
-    applyEventListeners, makeAMove,
+    applyEventListeners,
+    makeAMove,
+    winComb,
+    makeAMoveTest,
+    checkForWinnerTest,
+    winCombTest,
+    changePlayersNamesTest
   };
 })();
-  /* eslint-enable */
 
-function render() {
-  GameBoard.populateGameBoard();
-  Gameplay.applyEventListeners();
-  Gameplay.makeAMove();
-}
-
-render();
+export default Gameplay;

@@ -1,10 +1,13 @@
 {
   "name": "tic-tac-toe_js",
   "version": "1.0.0",
-  "description": "",
+  "description": "<!-- *** Thanks for checking out this README Template. If you have a suggestion that would *** make this better, please fork the repo and create a pull request or simply open *** an issue with the tag \"enhancement\". *** Thanks again! Now go create something AMAZING! :D -->",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -17,11 +20,40 @@
   },
   "homepage": "https://github.com/vzdrizhni/Tic-tac-toe_JS#readme",
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-jest": "^26.1.0",
+    "css-loader": "^3.6.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.1.0",
+    "style-loader": "^1.2.1",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
-    "stylelint-scss": "^3.17.2"
-  }
+    "stylelint-scss": "^3.17.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "jest": {
+    "modulePaths": [
+      "/shared/vendor/modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
+      "^config$": "<rootDir>/configs/app-config.js"
+    }
+  },
+  "dependencies": {}
 }
